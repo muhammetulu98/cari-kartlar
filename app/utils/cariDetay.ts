@@ -1,4 +1,6 @@
 import { cariler, type Cari } from '~/utils/cariVeri'
+import { efaturaSayilari } from '~/utils/efaturaVeri'
+import { ekstreAdedi } from '~/utils/ekstreVeri'
 
 export interface CariDetay {
   cari: Cari
@@ -110,6 +112,6 @@ export function cariDetayi(kod: string): CariDetay | null {
     }),
     istihbarat: sec(['Sorun görülmedi.', 'Vadeli satışta teminat önerilir.', 'Son 12 ayda ödemeler zamanında.', 'Limit artışı için bilanço istendi.'], h),
     onay: 'Onaylandı',
-    sayilar: { adresler: 1, yetkililer: 1 + (h % 2), ekstre: 10 + (h % 60), efatura: h % 5 === 0 ? 0 : 3 + (h % 30), kullanicilar: 0 },
+    sayilar: { adresler: 1, yetkililer: 1 + (h % 2), ekstre: ekstreAdedi(c.kod), efatura: (() => { const e = efaturaSayilari(c.kod, h % 5 !== 0); return e.giden + e.gelen })(), kullanicilar: 0 },
   }
 }

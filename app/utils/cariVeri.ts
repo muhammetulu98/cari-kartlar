@@ -16,6 +16,7 @@ export interface Cari {
   bakiye: number
   durum: 'AKTİF' | 'PASİF'
   ticariStatu: '' | 'N' | 'A' | 'AB'
+  kilitli: boolean
 }
 
 // Ünvan, vergi no, telefon ve temsilci adları kurgudur.

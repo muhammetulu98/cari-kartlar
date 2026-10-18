@@ -34,7 +34,7 @@ const tl = (n: number) => (n < 0 ? '-₺' : '₺') + Math.abs(n).toLocaleString(
     <header class="ust">
       <div>
         <h1>Cari Kartlar</h1>
-        <p>Cari listesi ve hızlı cari kart açma.</p>
+        <p>Cari listesi ve yeni cari kart açma.</p>
       </div>
       <div class="dugmeler">
         <button class="dugme">
@@ -43,7 +43,7 @@ const tl = (n: number) => (n < 0 ? '-₺' : '₺') + Math.abs(n).toLocaleString(
         </button>
         <NuxtLink to="/cari/yeni" class="dugme birincil">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-          Hızlı Cari Kart
+          Yeni Cari Kart
         </NuxtLink>
       </div>
     </header>

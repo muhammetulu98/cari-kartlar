@@ -16,7 +16,7 @@ Tasarım dili: açık tema, Figtree + JetBrains Mono, keskin köşeler (3–4 px
 
 ## 1. Cari Kartlar listesi (`/`)
 
-**Üst bölüm:** "Yenile" ve kırmızı "Hızlı Cari Kart" düğmeleri. Hızlı Cari Kart, `/cari/yeni` sayfasını açar. Yenile şimdilik işlev görmez.
+**Üst bölüm:** "Yenile" ve kırmızı "Yeni Cari Kart" düğmeleri. Yeni Cari Kart, `/cari/yeni` sayfasını açar. Yenile şimdilik işlev görmez.
 
 **Arama:** Cari kod, ünvan, vergi no, telefon, vergi dairesi, il, ilçe ve temsilci alanlarında arar. Arama **Enter'a basılınca** uygulanır; kutu boşaltılınca filtre kalkar.
 
@@ -46,7 +46,7 @@ Kaldırılanlar (isteğe bağlı geri getirilebilir): "Yalnız ERP serisi" çipi
 - **Kredi Limiti:** Kutuya **tıklanınca satır içinde düzenlenir**. Enter ile kaydeder, Esc ile vazgeçer, kutu dışına tıklamak da kaydeder. `2.500.000,50`, `2500000,5` ve `2500000.5` biçimleri kabul edilir; boş, harfli veya eksi değer reddedilir. Kayıttan sonra "Limit güncellendi" yazısı 3 sn görünür; liste ve Açık Limit da güncellenir. Limit yoksa "Limit tanımlı değil" notu çıkar.
 - **Açık Limit:** Kredi limiti − toplam risk (negatife düşmez). Yeşil renkte.
 
-**Sekmeler:** Genel Bilgi, Adresler (1), Ekstre, Yaşlandırma, e-Fatura, Finansal Özet. Genel Bilgi ve Finansal Özet doludur; diğerlerinde "Bu sekme prototipte henüz doldurulmadı" yazar. (Yetkililer, Müşteri Ayarları, Kullanıcılar ve Satış Şartları sekmeleri kaldırıldı.)
+**Sekmeler:** Genel Bilgi, Adresler (1), Ekstre, Yaşlandırma, e-Fatura, Finansal Özet. Genel Bilgi, Ekstre, e-Fatura ve Finansal Özet doludur; diğerlerinde "Bu sekme prototipte henüz doldurulmadı" yazar. (Yetkililer, Müşteri Ayarları, Kullanıcılar ve Satış Şartları sekmeleri kaldırıldı.)
 
 ### Genel Bilgi sekmesi (3 kolon)
 
@@ -59,6 +59,25 @@ Kaldırılanlar (isteğe bağlı geri getirilebilir): "Yalnız ERP serisi" çipi
 - **İstihbarat Bilgisi** bölümü bu kolonun altındadır; tek bir serbest metin notu gösterir.
 
 Her bölüm başlığının sağında küçük, kare **kalem simgesi** vardır (şimdilik tıklanınca bir şey yapmaz).
+
+### Ekstre sekmesi
+
+- **Filtreler:** Hareket Tipi (Tümü, Satış Fat., Tahsilat vb.), Başlangıç ve Bitiş tarihi (varsayılan 01.01.2026 – 31.12.2026), **Tüm Tarihler** (tarih aralığını boşaltır) ve **Sıfırla** (varsayılana döner).
+- **Özet satırı:** "19 hareket gösteriliyor / Toplam 40" ve seçili tarih aralığı.
+- **Tablo:** Tarih, Evrak, Belge (fatura no), Tip, Açıklama, Vade, Borç, Alacak, Yürüyen Bakiye. Yürüyen bakiyede artı kırmızı, eksi yeşil; alacak tutarları yeşil. Altta Toplam borç / alacak satırı.
+- **Devir satırı:** Seçilen aralıktan önceki hareketlerin bakiyesi, aralığın ilk satırı olarak "Devir" etiketiyle görünür (bakiye sıfırsa gösterilmez).
+- **Satır açma:** Fatura satırı tıklanınca kalem tablosu açılır (Stok Kodu, Stok Adı, Miktar, B.Fiyat, İsk 1–4, Net B.Fiyat, Net Tutar) ve altında KDV hariç / KDV / genel toplam. Tahsilat satırında ödeme yöntemi ve referans görünür. Borç tutarı KDV dahildir (net tutarların × 1,20'si).
+- **Excel İndir:** Tıklayınca iki seçenekli menü açılır: **Cari Ekstre** (yalnızca cari hareketler) ve **Detaylı Cari Ekstre** (her fatura satırının altında stok kalemleri: stok kodu/adı, miktar, B.Fiyat, İsk 1–4, net fiyat ve net tutar). İkisi de ekrandaki hareketleri (devir ve toplam dahil) `.csv` olarak indirir.
+- **Ekstre Mail Gönder:** Alıcı e-posta (carinin e-postasıyla dolu) girilen pencere açar; Gönder "gönderildi" bilgisi verir, gerçek e-posta gönderilmez.
+- Son yürüyen bakiye, carinin güncel bakiyesine eşittir. Hareketler cari koddan türetilen örnek veridir (`app/utils/ekstreVeri.ts`); sekme başlığındaki sayı toplam hareket sayısıdır.
+
+### e-Fatura sekmesi
+
+- **Giden / Gelen** seçimi (yanlarında fatura sayısı). Gelen faturalar yalnızca tedarikçi carilerde (`320.` serisi) bulunur; e-fatura mükellefi olmayan carilerde liste boştur ("Cari e-fatura mükellefi değil").
+- **Filtreler:** Evrak / fatura no / ETTN araması ve fatura tarihi aralığı (başlangıç – bitiş). Sağda "15 / 25 kayıt" sayacı, satır seçildiyse seçili sayısı.
+- **Kolonlar:** onay kutusu (başlıkta tümünü seç), Evrak, Fatura No, Tip (E-FATURA / E-ARŞİV), Fatura Tarihi, Oluşturma, Gönderim, Tutar, Durum (GÖNDERİLDİ / BEKLİYOR / HATALI, hepsi nötr gri rozet), İşlem.
+- **Satır seçilince** (onay kutuları) filtre çubuğunda **Excel indir** ve **PDF indir** düğmeleri çıkar. Excel indir seçili faturaları (altında toplam tutarla) `.csv` olarak indirir; PDF indir tarayıcının yazdırma penceresini açar, hedef olarak "PDF olarak kaydet" seçilir.
+- "Detay" düğmesi şimdilik bir işlem yapmaz. Faturalar cari koddan türetilen örnek veridir (`app/utils/efaturaVeri.ts`); sekme başlığındaki sayı giden + gelen toplamıdır.
 
 ### Finansal Özet sekmesi (3 kolon)
 

@@ -186,6 +186,10 @@ const sekmeAdi = computed(() => sekmeler.value.find(s => s.id === aktif.value)?.
         </div>
       </div>
 
+      <EFaturaListesi v-else-if="aktif === 'efatura'" :kod="d.cari.kod" :unvan="d.cari.unvan" :mukellef="d.eFatura.mukellef" />
+
+      <Ekstre v-else-if="aktif === 'ekstre'" :kod="d.cari.kod" :unvan="d.cari.unvan" :eposta="d.eposta" :bakiye="d.cari.bakiye" />
+
       <div v-else class="yer-tutucu">
         <b>{{ sekmeAdi }}</b>
         <p>Bu sekme prototipte henüz doldurulmadı.</p>
