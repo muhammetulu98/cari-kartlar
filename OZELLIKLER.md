@@ -46,7 +46,7 @@ Kaldırılanlar (isteğe bağlı geri getirilebilir): "Yalnız ERP serisi" çipi
 - **Kredi Limiti:** Kutuya **tıklanınca satır içinde düzenlenir**. Enter ile kaydeder, Esc ile vazgeçer, kutu dışına tıklamak da kaydeder. `2.500.000,50`, `2500000,5` ve `2500000.5` biçimleri kabul edilir; boş, harfli veya eksi değer reddedilir. Kayıttan sonra "Limit güncellendi" yazısı 3 sn görünür; liste ve Açık Limit da güncellenir. Limit yoksa "Limit tanımlı değil" notu çıkar.
 - **Açık Limit:** Kredi limiti − toplam risk (negatife düşmez). Yeşil renkte.
 
-**Sekmeler:** Genel Bilgi, Adresler (1), Ekstre, Yaşlandırma, İskonto, e-Fatura, Finansal Özet. Genel Bilgi ve Finansal Özet doludur; diğerlerinde "Bu sekme prototipte henüz doldurulmadı" yazar. (Yetkililer, Müşteri Ayarları ve Kullanıcılar sekmeleri kaldırıldı.)
+**Sekmeler:** Genel Bilgi, Adresler (1), Ekstre, Yaşlandırma, e-Fatura, Finansal Özet. Genel Bilgi ve Finansal Özet doludur; diğerlerinde "Bu sekme prototipte henüz doldurulmadı" yazar. (Yetkililer, Müşteri Ayarları, Kullanıcılar ve Satış Şartları sekmeleri kaldırıldı.)
 
 ### Genel Bilgi sekmesi (3 kolon)
 

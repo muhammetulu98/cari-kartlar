@@ -50,7 +50,6 @@ const sekmeler = computed(() => {
     { id: 'adres', ad: 'Adresler', sayi: s?.adresler },
     { id: 'ekstre', ad: 'Ekstre', sayi: s?.ekstre },
     { id: 'yas', ad: 'Yaşlandırma' },
-    { id: 'iskonto', ad: 'İskonto' },
     { id: 'efatura', ad: 'e-Fatura', sayi: s?.efatura },
     { id: 'finansal', ad: 'Finansal Özet' },
   ]
@@ -119,7 +118,6 @@ const sekmeAdi = computed(() => sekmeler.value.find(s => s.id === aktif.value)?.
             <div><dt>Vergi Dairesi</dt><dd>{{ d.cari.vergiDairesi }} <span class="soluk">({{ d.vergiDairesiKodu }})</span></dd></div>
             <div><dt>Vergi No</dt><dd class="mono">{{ d.cari.vergiNo }}</dd></div>
             <div><dt>Hareket</dt><dd>{{ d.hareket }}</dd></div>
-            <div><dt>Döviz</dt><dd>{{ d.doviz }}</dd></div>
             <div><dt>Grup</dt><dd>{{ d.cari.grup }}</dd></div>
             <div><dt>Bölge</dt><dd>{{ d.bolge }}</dd></div>
             <div><dt>Sektör</dt><dd>{{ d.cari.sektor }}</dd></div>
@@ -151,16 +149,14 @@ const sekmeAdi = computed(() => sekmeler.value.find(s => s.id === aktif.value)?.
         <div class="kolon">
           <h3>Ticari Koşullar <button class="kalem" title="Düzenle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button></h3>
           <dl>
-            <div><dt>Muh. Hesabı</dt><dd><span class="mono">{{ d.muhHesabi }}</span><small class="alt2">{{ d.cari.kod.startsWith('320.') ? 'Satıcılar Hesabı' : 'Alıcılar Hesabı' }}</small></dd></div>
             <div><dt>Satış İsk.</dt><dd>{{ d.satisIsk }}</dd></div>
             <div><dt>Ödeme Planı</dt><dd>{{ d.odemePlani }}</dd></div>
             <div><dt>Ödeme Cinsi</dt><dd>{{ d.odemeCinsi }}</dd></div>
             <div><dt>Ödeme Şekli</dt><dd>{{ d.odemeSekli }}</dd></div>
-            <div><dt>Risk Takibi</dt><dd><span class="rozet gri">{{ d.riskTakibi ? 'Aktif' : 'Pasif' }}</span></dd></div>
             <div><dt>Ticari Statü</dt><dd>{{ d.cari.ticariStatu || '—' }}</dd></div>
           </dl>
 
-          <h3 class="alt-baslik">İstihbarat Bilgisi <button class="kalem" title="Düzenle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button></h3>
+          <h3 class="alt-baslik">İstihbarat Bilgisi</h3>
           <p class="istihbarat">{{ d.istihbarat }}</p>
         </div>
       </div>
